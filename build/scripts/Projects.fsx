@@ -49,6 +49,17 @@ module Projects =
         static member AllPublishable = seq [Project Project.ElasticsearchNet; Project Project.Nest;] 
         static member Tests = seq [PrivateProject PrivateProject.Tests;] 
 
+        member this.NugetName =
+            match this with
+            | Project p ->
+                match p with
+                | Nest -> "Ref12.Codex.Nest"
+                | ElasticsearchNet -> "Ref12.Codex.Elasticsearch.Net"
+            | PrivateProject p ->
+                match p with
+                | Tests -> "Tests"
+                | DocGenerator -> "DocGenerator"
+
         member this.Name =
             match this with
             | Project p ->

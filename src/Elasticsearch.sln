@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nest", "Nest\Nest.csproj", "{072BA7DA-7B60-407D-8B6E-95E3186BE70C}"
 EndProject
@@ -14,13 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Build", "_Build", "{432D55
 		..\build.sh = ..\build.sh
 		..\build\Clients.Common.targets = ..\build\Clients.Common.targets
 		..\contributing.md = ..\contributing.md
-		..\build\Elasticsearch.Net.nuspec = ..\build\Elasticsearch.Net.nuspec
 		..\global.json = ..\global.json
 		..\license.txt = ..\license.txt
-		..\build\NEST.nuspec = ..\build\NEST.nuspec
 		..\paket.bat = ..\paket.bat
 		..\paket.dependencies = ..\paket.dependencies
 		..\readme.md = ..\readme.md
+		..\build\Ref12.Codex.Elasticsearch.Net.nuspec = ..\build\Ref12.Codex.Elasticsearch.Net.nuspec
+		..\build\Ref12.Codex.NEST.nuspec = ..\build\Ref12.Codex.NEST.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGeneration", "CodeGeneration", "{93331BEE-0AA0-47B7-B1D2-BD5BD31634D1}"
@@ -71,5 +71,8 @@ Global
 		{56A87048-9065-459B-826D-3DF68B409845} = {93331BEE-0AA0-47B7-B1D2-BD5BD31634D1}
 		{D6997ADC-E933-418E-831C-DE1A78897493} = {432D5575-2347-4D3C-BF8C-3E38410C46CA}
 		{98400F59-4BA8-4534-9A78-9C7FA0B42901} = {93331BEE-0AA0-47B7-B1D2-BD5BD31634D1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22F43606-772A-494E-B1A9-FC284735F613}
 	EndGlobalSection
 EndGlobal

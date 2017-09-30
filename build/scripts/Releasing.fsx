@@ -27,7 +27,7 @@ module Release =
         |> Seq.iter(fun p ->
             CreateDir Paths.NugetOutput
 
-            let name = p.Name;
+            let name = p.NugetName;
             let nuspec = (sprintf @"build\%s.nuspec" name)
             let nugetOutFile =  Paths.Output(sprintf "%s.%s.nupkg" name (Versioning.CurrentVersion.ToString()))
 
@@ -79,6 +79,8 @@ module Release =
                                  "-properties"; properties; 
                                ] |> ignore
             traceFAKE "%s" Paths.BuildOutput
+            traceFAKE "%s" Paths.NugetOutput
+            traceFAKE "%s" nugetOutFile
             MoveFile Paths.NugetOutput nugetOutFile
         )
 
