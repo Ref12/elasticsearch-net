@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
-		<id>Elasticsearch.Net</id>
+		<id>Ref12.Codex.Elasticsearch.Net</id>
 		<version>$version$</version>
-		<title>Elasticsearch.Net - Elasticsearch .NET low level client</title>
+		<title>Elasticsearch.Net - Elasticsearch .NET low level client for use by Ref12/Codex</title>
 		<authors>Elastic and contributors</authors>
 		<owners>Elastic</owners>
 		<licenseUrl>https://github.com/elastic/elasticsearch-net/blob/master/license.txt</licenseUrl>

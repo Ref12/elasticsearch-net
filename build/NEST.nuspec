@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
-		<id>NEST</id>
+		<id>Ref12.Codex.NEST</id>
 		<version>$version$</version>
-		<title>NEST - Elasticsearch .NET high level client</title>
+		<title>NEST - Elasticsearch .NET high level client for use by Ref12/Codex</title>
 		<authors>Elastic and contributors</authors>
 		<owners>Elastic</owners>
 		<licenseUrl>https://github.com/elastic/elasticsearch-net/blob/master/license.txt</licenseUrl>
@@ -17,11 +17,11 @@
 		<tags>elasticsearch,elastic,search,lucene,nest</tags>
 		<dependencies>
 			<group targetFramework=".NETFramework4.5">
-				<dependency id="Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
+				<dependency id="Ref12.Codex.Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
 				<dependency id="Newtonsoft.Json" version="[$jsonDotNetCurrentVersion$, $jsonDotNetNextVersion$)" />
 			</group>
 			<group targetFramework=".NETFramework4.6">
-				<dependency id="Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
+				<dependency id="Ref12.Codex.Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
 				<dependency id="Newtonsoft.Json" version="[$jsonDotNetCurrentVersion$, $jsonDotNetNextVersion$)" />
 			</group>
 			<group targetFramework=".NETStandard1.3">
@@ -29,7 +29,7 @@
 				<dependency id="System.Collections.Specialized" version="[4.3.0, )" />
 				<dependency id="System.Reflection.TypeExtensions" version="[4.3.0, )" />
 				<dependency id="System.Linq.Queryable" version="[4.0.1, )" />
-				<dependency id="Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
+				<dependency id="Ref12.Codex.Elasticsearch.Net" version="[$version$, $nextMajorVersion$)" />
 				<dependency id="Newtonsoft.Json" version="[$jsonDotNetCurrentVersion$, $jsonDotNetNextVersion$)" />
 			</group>
 		</dependencies>
