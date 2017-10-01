@@ -7,5 +7,8 @@ namespace Nest
 	public class BulkCreateResponseItem : BulkResponseItemBase
 	{
 		public override string Operation { get; internal set; }
+
+		[JsonProperty("created")]
+		public bool Created { get; internal set; }
 	}
 }

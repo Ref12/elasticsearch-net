@@ -80,3 +80,6 @@ project.lock.json
 .idea/
 *.sln.iml
 /src/.vs/restore.dg
+
+paket-files/
+UpgradeLog*.htm

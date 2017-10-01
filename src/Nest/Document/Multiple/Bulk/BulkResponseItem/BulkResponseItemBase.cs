@@ -10,16 +10,40 @@ namespace Nest
 
 		[JsonProperty("_index")]
 		public string Index { get; internal set; }
+
+		/// <summary>
+		/// The assigned shard id of the item. Codex ElasticSearch only.
+		/// </summary>
+		[JsonProperty("_shard_id")]
+		public int Shard { get; internal set; }
+
 		[JsonProperty("_type")]
 		public string Type { get; internal set; }
+
 		[JsonProperty("_id")]
 		public string Id { get; internal set; }
+
 		[JsonProperty("_version")]
 		public long Version { get; internal set; }
+
+		/// <summary>
+		/// The assigned stable id of the item. Codex ElasticSearch only.
+		/// </summary>
+		[JsonProperty("_stableId")]
+		public long StableId { get; internal set; } = -1;
+
+		[JsonProperty("_seqNo")]
+		public long SequenceNumber { get; internal set; }
+
 		[JsonProperty("status")]
 		public int Status { get; internal set; }
+
 		[JsonProperty("error")]
 		public BulkError Error { get; internal set; }
+
+		[JsonProperty("result")]
+		public string Result { get; internal set; }
+
 		[JsonProperty("_shards")]
 		public ShardsMetaData Shards { get; internal set; }
 
@@ -44,6 +68,6 @@ namespace Nest
 			}
 		}
 
-		public override string ToString() => $"{Operation} returned {Status} _index: {Index} _type: {Type} _id: {Id} _version: {Version} error: {Error}";
+		public override string ToString() => $"{Operation} returned {Status} ({Result}) _index: {Index} _shard: {Shard} _type: {Type} _id: {Id} _version: {Version} _seqNo: {SequenceNumber}, _stableId: {StableId} error: {Error}";
 	}
 }

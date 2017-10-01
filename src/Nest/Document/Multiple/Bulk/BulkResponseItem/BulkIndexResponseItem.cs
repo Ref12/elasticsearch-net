@@ -14,5 +14,8 @@ namespace Nest
         /// </summary>
         [JsonProperty(PropertyName = "matches")]
         public IEnumerable<string> Matches { get; internal set; }
+
+		[JsonProperty("created")]
+		public bool Created { get; internal set; }
 	}
 }
