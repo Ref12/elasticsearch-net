@@ -8,6 +8,11 @@ namespace Nest
 {
 	public class PropertyWalker
 	{
+		/// <summary>
+		/// Marker property for use by visitors to return property which will be skipped in mappings
+		/// </summary>
+		public static readonly IProperty IgnoredPropertyInstance = new IgnoredProperty();
+
 		private readonly Type _type;
 		private readonly IPropertyVisitor _visitor;
 		private readonly int _maxRecursion;
@@ -45,6 +50,9 @@ namespace Nest
 					continue;
 
 				var property = GetProperty(propertyInfo, attribute);
+				if (property == IgnoredPropertyInstance)
+					continue;
+
 				var withCLrOrigin = property as IPropertyWithClrOrigin;
 				if (withCLrOrigin != null)
 					withCLrOrigin.ClrOrigin = propertyInfo;
@@ -168,6 +176,13 @@ namespace Nest
 				return type.GetGenericArguments()[0];
 
 			return type;
+		}
+
+		private class IgnoredProperty : PropertyBase
+		{
+			protected IgnoredProperty() : base(typeof(IgnoredProperty))
+			{
+			}
 		}
 	}
 }
