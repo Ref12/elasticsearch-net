@@ -180,7 +180,7 @@ namespace Nest
 
 		private class IgnoredProperty : PropertyBase
 		{
-			protected IgnoredProperty() : base(typeof(IgnoredProperty))
+			public IgnoredProperty() : base(FieldType.None)
 			{
 			}
 		}
