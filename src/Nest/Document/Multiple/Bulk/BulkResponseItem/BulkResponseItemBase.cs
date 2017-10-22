@@ -29,10 +29,10 @@ namespace Nest
 		/// <summary>
 		/// The assigned stable id of the item. Codex ElasticSearch only.
 		/// </summary>
-		[JsonProperty("_stableId")]
+		[JsonProperty("_stable_id")]
 		public long StableId { get; internal set; } = -1;
 
-		[JsonProperty("_seqNo")]
+		[JsonProperty("_seq_no")]
 		public long SequenceNumber { get; internal set; }
 
 		[JsonProperty("status")]
