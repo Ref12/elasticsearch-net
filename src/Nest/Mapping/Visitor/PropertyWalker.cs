@@ -88,7 +88,7 @@ namespace Nest
 			return property;
 		}
 
-		private IProperty InferProperty(Type type)
+		public static IProperty InferProperty(Type type)
 		{
 			type = GetUnderlyingType(type);
 
@@ -165,7 +165,7 @@ namespace Nest
 			return new ObjectProperty();
 		}
 
-		private Type GetUnderlyingType(Type type)
+		private static Type GetUnderlyingType(Type type)
 		{
 			if (type.IsArray)
 				return type.GetElementType();
