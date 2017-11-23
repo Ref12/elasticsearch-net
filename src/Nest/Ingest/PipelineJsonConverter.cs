@@ -39,6 +39,9 @@ namespace Nest
 					case "append":
 						processors.Add(jsonProcessor.ToObject<AppendProcessor>(serializer));
 						break;
+					case "binary_sequence":
+						processors.Add(jsonProcessor.ToObject<BinarySequenceProcessor>(serializer));
+						break;
 					case "convert":
 						processors.Add(jsonProcessor.ToObject<ConvertProcessor>(serializer));
 						break;
