@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,6 +42,12 @@ namespace Nest
 		/// A script to specify the update.
 		/// </summary>
 		IScript Script { get; set; }
+
+		/// <summary>
+		/// The pipeline to process documents with
+		/// </summary>
+		[JsonProperty("pipeline")]
+		string Pipeline { get; set; }
 	}
 
 	public class BulkUpdateOperation<TDocument, TPartialDocument> : BulkOperationBase, IBulkUpdateOperation<TDocument, TPartialDocument>
@@ -125,6 +132,11 @@ namespace Nest
 		/// A script to specify the update.
 		/// </summary>
 		public IScript Script { get; set; }
+
+		/// <summary>
+		/// The pipeline to process documents with
+		/// </summary>
+		public string Pipeline { get; set; }
 	}
 
 	public class BulkUpdateDescriptor<TDocument, TPartialDocument>
@@ -136,6 +148,7 @@ namespace Nest
 		protected override string BulkOperationType => "update";
 		protected override Type BulkOperationClrType => typeof(TDocument);
 
+		string IBulkUpdateOperation<TDocument, TPartialDocument>.Pipeline { get; set; }
 		TDocument IBulkUpdateOperation<TDocument, TPartialDocument>.IdFrom { get; set; }
 		TDocument IBulkUpdateOperation<TDocument, TPartialDocument>.Upsert { get; set; }
 		TPartialDocument IBulkUpdateOperation<TDocument, TPartialDocument>.Doc { get; set; }
@@ -183,6 +196,11 @@ namespace Nest
 		/// </summary>
 		public BulkUpdateDescriptor<TDocument, TPartialDocument> DocAsUpsert(bool partialDocumentAsUpsert = true) =>
 			Assign(a => a.DocAsUpsert = partialDocumentAsUpsert);
+
+		/// <summary>
+		/// The pipeline id to preprocess documents with
+		/// </summary>
+		public BulkUpdateDescriptor<TDocument, TPartialDocument> Pipeline(string pipeline) => Assign(a => a.Pipeline = pipeline);
 
 		/// <summary>
 		/// If you would like your script to run regardless of whether the document exists or not — i.e. the script handles

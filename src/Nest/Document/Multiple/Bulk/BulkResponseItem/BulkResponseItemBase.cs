@@ -26,12 +26,6 @@ namespace Nest
 		[JsonProperty("_version")]
 		public long Version { get; internal set; }
 
-		/// <summary>
-		/// The assigned stable id of the item. Codex ElasticSearch only.
-		/// </summary>
-		[JsonProperty("_stable_id")]
-		public long StableId { get; internal set; } = -1;
-
 		[JsonProperty("_seq_no")]
 		public long SequenceNumber { get; internal set; }
 
