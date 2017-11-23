@@ -25,8 +25,10 @@ namespace Tests.Ingest
 			var pipeline = new Pipeline { Processors = processors };
 			var deserializedPipeline = this.Deserialize<Pipeline>(this.Serialize(pipeline));
 
-			deserializedPipeline.Processors.Should().HaveCount(pipeline.Processors.Count());
-			deserializedPipeline.Processors.Select(p => p.Name).Distinct().Should().HaveCount(pipeline.Processors.Count());
+			deserializedPipeline.Processors.Should().HaveCount(pipeline.Processors.Count(), "All processors must be deserialized");
+			deserializedPipeline.Processors.Select(p => p.Name).Distinct().Should().HaveCount(pipeline.Processors.Count(),
+				"All processors must have unique names. Duplicate names: '{0}'",
+				string.Join(", ", deserializedPipeline.Processors.ToLookup(p => p.Name).Where(g => g.Count() > 1).SelectMany(g => g).Select($"(Name: {p.Name}, Processor: {p.GetType()})")));
 		}
 	}
 }
