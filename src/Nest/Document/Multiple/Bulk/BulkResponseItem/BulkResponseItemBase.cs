@@ -62,6 +62,6 @@ namespace Nest
 			}
 		}
 
-		public override string ToString() => $"{Operation} returned {Status} ({Result}) _index: {Index} _shard: {Shard} _type: {Type} _id: {Id} _version: {Version} _seqNo: {SequenceNumber}, _stableId: {StableId} error: {Error}";
+		public override string ToString() => $"{Operation} returned {Status} ({Result}) _index: {Index} _shard: {Shard} _type: {Type} _id: {Id} _version: {Version} _seqNo: {SequenceNumber}, error: {Error}";
 	}
 }
