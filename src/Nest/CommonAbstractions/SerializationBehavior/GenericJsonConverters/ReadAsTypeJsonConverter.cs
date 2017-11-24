@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	public class ReadAsTypeJsonConverter<T> : JsonConverter
+	internal class ReadAsTypeJsonConverter<T> : JsonConverter
 		where T : class
 	{
 		public override bool CanRead => true;

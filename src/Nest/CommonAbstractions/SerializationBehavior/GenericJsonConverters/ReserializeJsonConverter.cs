@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	public class ReserializeJsonConverter<TReadAs, TInterface> : JsonConverter
+	internal class ReserializeJsonConverter<TReadAs, TInterface> : JsonConverter
 		where TReadAs : class, TInterface
 		where TInterface : class
 	{

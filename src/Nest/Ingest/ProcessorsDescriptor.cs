@@ -22,14 +22,11 @@ namespace Nest
 			Assign(a => a.AddIfNotNull(selector?.Invoke(new AppendProcessorDescriptor<T>())));
 
 		/// <summary>
-		/// Add custom processor
+		/// Encode integral values a dense bit vector for use by stored filter queries.
+		/// Codex Elasticsearch only.
 		/// </summary>
-		public ProcessorsDescriptor CustomProcessor<TProcessorDescriptor, TProcessor>(Func<TProcessorDescriptor, TProcessor> selector)
-			where TProcessorDescriptor : class, TProcessor, new()
-			where TProcessor : class, IProcessor
-		{
-			return Assign(a => a.AddIfNotNull(selector?.Invoke(new TProcessorDescriptor())));
-		}
+		public ProcessorsDescriptor BinarySequence<T>(Func<BinarySequenceProcessorDescriptor<T>, IBinarySequenceProcessor> selector) where T : class =>
+			Assign(a => a.AddIfNotNull(selector?.Invoke(new BinarySequenceProcessorDescriptor<T>())));
 
 		public ProcessorsDescriptor Convert<T>(Func<ConvertProcessorDescriptor<T>, IConvertProcessor> selector) where T : class  =>
 			Assign(a => a.AddIfNotNull(selector?.Invoke(new ConvertProcessorDescriptor<T>())));
