@@ -80,24 +80,24 @@ namespace Nest
 		/// <summary>
 		/// The field containing integral values to add to the bit vector
 		/// </summary>
-		public BinarySequenceProcessorDescriptor<T> IncludeField(Field field) => Assign(a => a.TargetField = field);
+		public BinarySequenceProcessorDescriptor<T> IncludeField(Field field) => Assign(a => a.IncludeField = field);
 
 		/// <summary>
 		/// The field containing integral values to add to the bit vector
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> IncludeField(Expression<Func<T, object>> objectPath) =>
-			Assign(a => a.TargetField = objectPath);
+			Assign(a => a.IncludeField = objectPath);
 
 		/// <summary>
 		/// The field containing integral values to remove from the bit vector
 		/// </summary>
-		public BinarySequenceProcessorDescriptor<T> ExcludeField(Field field) => Assign(a => a.TargetField = field);
+		public BinarySequenceProcessorDescriptor<T> ExcludeField(Field field) => Assign(a => a.ExcludeField = field);
 
 		/// <summary>
 		/// The field containing integral values to remove from the bit vector
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> ExcludeField(Expression<Func<T, object>> objectPath) =>
-			Assign(a => a.TargetField = objectPath);
+			Assign(a => a.ExcludeField = objectPath);
 
 		/// <summary>
 		/// The field in which the bit vector is stored
