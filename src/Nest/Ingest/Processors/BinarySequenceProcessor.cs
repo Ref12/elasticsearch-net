@@ -35,6 +35,24 @@ namespace Nest
 		/// </summary>
 		[JsonProperty("target_field")]
 		Field TargetField { get; set; }
+
+		/// <summary>
+		/// The field containing a list of bit vectors to union with the bit vector
+		/// </summary>
+		[JsonProperty("union_field")]
+		Field UnionField { get; set; }
+
+		/// <summary>
+		/// The field in which the count of entries in bit vector is stored (optional)
+		/// </summary>
+		[JsonProperty("target_count_field")]
+		Field TargetCountField { get; set; }
+
+		/// <summary>
+		/// The field in which the hash of bit vector is stored (optional)
+		/// </summary>
+		[JsonProperty("target_hash_field")]
+		Field TargetHashField { get; set; }
 	}
 
 	public class BinarySequenceProcessor : ProcessorBase, IBinarySequenceProcessor
@@ -42,19 +60,34 @@ namespace Nest
 		protected override string Name => "binary_sequence";
 
 		/// <summary>
-		/// The field containing integral values to add to the bit vector
+		/// <see cref="IBinarySequenceProcessor.IncludeField"/>
 		/// </summary>
 		public Field IncludeField { get; set; }
 
 		/// <summary>
-		/// The field containing integral values to remove from the bit vector
+		/// <see cref="IBinarySequenceProcessor.ExcludeField"/>
 		/// </summary>
 		public Field ExcludeField { get; set; }
 
 		/// <summary>
-		/// The field in which the bit vector is stored
+		/// <see cref="IBinarySequenceProcessor.TargetField"/>
 		/// </summary>
 		public Field TargetField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.UnionField"/>
+		/// </summary>
+		public Field UnionField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetCountField"/>
+		/// </summary>
+		public Field TargetCountField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetHashField"/>
+		/// </summary>
+		public Field TargetHashField { get; set; }
 	}
 
 	public class BinarySequenceProcessorDescriptor<T> : ProcessorDescriptorBase<BinarySequenceProcessorDescriptor<T>, IBinarySequenceProcessor>, IBinarySequenceProcessor
@@ -63,51 +96,99 @@ namespace Nest
 		protected override string Name => "binary_sequence";
 
 		/// <summary>
-		/// The field containing integral values to add to the bit vector
+		/// <see cref="IBinarySequenceProcessor.IncludeField"/>
 		/// </summary>
 		Field IBinarySequenceProcessor.IncludeField { get; set; }
 
 		/// <summary>
-		/// The field containing integral values to remove from the bit vector
+		/// <see cref="IBinarySequenceProcessor.ExcludeField"/>
 		/// </summary>
 		Field IBinarySequenceProcessor.ExcludeField { get; set; }
 
 		/// <summary>
-		/// The field in which the bit vector is stored
+		/// <see cref="IBinarySequenceProcessor.TargetField"/>
 		/// </summary>
 		Field IBinarySequenceProcessor.TargetField { get; set; }
 
 		/// <summary>
-		/// The field containing integral values to add to the bit vector
+		/// <see cref="IBinarySequenceProcessor.UnionField"/>
+		/// </summary>
+		Field IBinarySequenceProcessor.UnionField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetCountField"/>
+		/// </summary>
+		Field IBinarySequenceProcessor.TargetCountField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetHashField"/>
+		/// </summary>
+		Field IBinarySequenceProcessor.TargetHashField { get; set; }
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.IncludeField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> IncludeField(Field field) => Assign(a => a.IncludeField = field);
 
 		/// <summary>
-		/// The field containing integral values to add to the bit vector
+		/// <see cref="IBinarySequenceProcessor.IncludeField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> IncludeField(Expression<Func<T, object>> objectPath) =>
 			Assign(a => a.IncludeField = objectPath);
 
 		/// <summary>
-		/// The field containing integral values to remove from the bit vector
+		/// <see cref="IBinarySequenceProcessor.ExcludeField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> ExcludeField(Field field) => Assign(a => a.ExcludeField = field);
 
 		/// <summary>
-		/// The field containing integral values to remove from the bit vector
+		/// <see cref="IBinarySequenceProcessor.ExcludeField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> ExcludeField(Expression<Func<T, object>> objectPath) =>
 			Assign(a => a.ExcludeField = objectPath);
 
 		/// <summary>
-		/// The field in which the bit vector is stored
+		/// <see cref="IBinarySequenceProcessor.TargetField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> TargetField(Field field) => Assign(a => a.TargetField = field);
 
 		/// <summary>
-		/// The field in which the bit vector is stored
+		/// <see cref="IBinarySequenceProcessor.TargetField"/>
 		/// </summary>
 		public BinarySequenceProcessorDescriptor<T> TargetField(Expression<Func<T, object>> objectPath) =>
 			Assign(a => a.TargetField = objectPath);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetHashField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> TargetHashField(Field field) => Assign(a => a.TargetHashField = field);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetHashField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> TargetHashField(Expression<Func<T, object>> objectPath) =>
+			Assign(a => a.TargetHashField = objectPath);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetCountField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> TargetCountField(Field field) => Assign(a => a.TargetCountField = field);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.TargetCountField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> TargetCountField(Expression<Func<T, object>> objectPath) =>
+			Assign(a => a.TargetCountField = objectPath);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.UnionField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> UnionField(Field field) => Assign(a => a.UnionField = field);
+
+		/// <summary>
+		/// <see cref="IBinarySequenceProcessor.UnionField"/>
+		/// </summary>
+		public BinarySequenceProcessorDescriptor<T> UnionField(Expression<Func<T, object>> objectPath) =>
+			Assign(a => a.UnionField = objectPath);
 	}
 }
