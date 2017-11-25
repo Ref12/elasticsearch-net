@@ -70,6 +70,12 @@ namespace Nest
 			WrapInContainer(selector, (query, container) => container.Terms = query);
 
 		/// <summary>
+		/// A query matching a stored filter of integral values
+		/// </summary>
+		public QueryContainer StoredFilter(Func<StoredFilterQueryDescriptor<T>, IStoredFilterQuery> selector) =>
+			WrapInContainer(selector, (query, container) => container.StoredFilter = query);
+
+		/// <summary>
 		/// A fuzzy based query that uses similarity based on Levenshtein (edit distance) algorithm.
 		/// Warning: this query is not very scalable with its default prefix length of 0 � in this case,
 		/// every term will be enumerated and cause an edit score calculation or max_expansions is not set.

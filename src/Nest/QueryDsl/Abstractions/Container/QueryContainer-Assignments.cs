@@ -10,7 +10,7 @@ namespace Nest
 
 		internal TypedQueryBox QueryBox { get; set; }
 
-		internal IQuery ContainedQuery => QueryBox.Query;
+		internal IQuery ContainedQuery => QueryBox?.Query;
 
 		private void Set<T>(T value) where T : IQuery
 		{
@@ -75,5 +75,6 @@ namespace Nest
 		ITypeQuery IQueryContainer.Type { get { return Get<ITypeQuery>(); } set { Set(value); } }
 		IPercolateQuery IQueryContainer.Percolate { get { return Get<IPercolateQuery>(); } set { Set(value); } }
 		IParentIdQuery IQueryContainer.ParentId { get { return Get<IParentIdQuery>(); } set { Set(value); } }
+		IStoredFilterQuery IQueryContainer.StoredFilter { get { return Get<IStoredFilterQuery>(); } set { Set(value); } }
 	}
 }

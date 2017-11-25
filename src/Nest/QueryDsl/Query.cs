@@ -168,6 +168,9 @@ namespace Nest
 		public static QueryContainer SpanFieldMasking(Func<SpanFieldMaskingQueryDescriptor<T>, ISpanFieldMaskingQuery> selector) =>
 			new QueryContainerDescriptor<T>().SpanFieldMasking(selector);
 
+		public static QueryContainer StoredFilter(Func<StoredFilterQueryDescriptor<T>, IStoredFilterQuery> selector) =>
+			new QueryContainerDescriptor<T>().StoredFilter(selector);
+
 		[Obsolete("Deprecated in 5.0.0. Use Search Template API instead")]
 		public static QueryContainer Template(Func<TemplateQueryDescriptor<T>, ITemplateQuery> selector) =>
 			new QueryContainerDescriptor<T>().Template(selector);

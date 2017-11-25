@@ -164,6 +164,9 @@ namespace Nest
 		[JsonProperty("percolate")]
 		IPercolateQuery Percolate { get; set; }
 
+		[JsonProperty("stored_filter")]
+		IStoredFilterQuery StoredFilter { get; set; }
+
 		void Accept(IQueryVisitor visitor);
 	}
 }
