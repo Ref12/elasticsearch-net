@@ -26,7 +26,7 @@ namespace Nest
 			c.IsVerbatim = query.IsVerbatim;
 			c.IsStrict = query.IsStrict;
 			assign(query, container);
-			container.QueryBox = new TypedQueryBox<TQueryInterface>(query);
+			//container.QueryBox = new TypedQueryBox<TQueryInterface>(query);
 
 			//if query is writable (not conditionless or verbatim): return a container that holds the query
 			if (query.IsWritable)
@@ -46,7 +46,7 @@ namespace Nest
 		/// </summary>
 		/// <param name="rawJson">The query dsl json</param>
 		public QueryContainer Raw(string rawJson) =>
-			WrapInContainer((RawQueryDescriptor descriptor) => descriptor.Raw(rawJson), (query, container) => container.RawQuery = query);
+			WrapInContainer<RawQueryDescriptor, IRawQuery>((RawQueryDescriptor descriptor) => descriptor.Raw(rawJson), (query, container) => container.RawQuery = query);
 
 		/// <summary>
 		/// A query that uses a query parser in order to parse its content.
