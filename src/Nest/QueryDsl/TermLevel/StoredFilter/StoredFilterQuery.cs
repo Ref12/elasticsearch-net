@@ -15,6 +15,12 @@ namespace Nest
 
 	public class StoredFilterQuery : FieldNameQueryBase, IStoredFilterQuery
 	{
+		/// <summary>
+		/// Token used in stored filter id (see <see cref="IFieldLookup.Id"/> of <see cref="IStoredFilterQuery.FilterLookup"/>)
+		/// for replacement when performing stored filter queries
+		/// </summary>
+		public const string ShardIdToken = "{shard_id}";
+
 		protected override bool Conditionless => IsConditionless(this);
 		public IFieldLookup FilterLookup { get; set; }
 

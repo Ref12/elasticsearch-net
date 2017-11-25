@@ -22,11 +22,15 @@ namespace Nest
 
 			writer.WriteStartObject();
 			{
-				if (t.FilterLookup != null)
+				writer.WritePropertyName(field);
+				serializer.Serialize(writer, t.FilterLookup);
+
+				var filterId = t.FilterLookup?.Id.GetString(settings);
+				if (filterId.Contains(StoredFilterQuery.ShardIdToken) == false)
 				{
-					writer.WritePropertyName(field);
-					serializer.Serialize(writer, t.FilterLookup);
+					throw new InvalidOperationException($"Stored filter Id '{filterId}' does not contain StoredFilterQuery.ShardIdToken");
 				}
+
 				if (t.Boost.HasValue)
 				{
 					writer.WritePropertyName("boost");
