@@ -50,7 +50,7 @@ namespace Nest
 		protected override bool Conditionless => StoredFilterQuery.IsConditionless(this);
 		IFieldLookup IStoredFilterQuery.FilterLookup { get; set; }
 
-		public StoredFilterQueryDescriptor<T> TermsLookup<TOther>(Func<FieldLookupDescriptor<TOther>, IFieldLookup> selector)
+		public StoredFilterQueryDescriptor<T> FilterLookup<TOther>(Func<FieldLookupDescriptor<TOther>, IFieldLookup> selector)
 			where TOther : class => Assign(a => a.FilterLookup = selector(new FieldLookupDescriptor<TOther>()));
 	}
 }
