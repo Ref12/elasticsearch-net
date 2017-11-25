@@ -8,7 +8,7 @@ namespace Nest
 	{
 		private IQueryContainer Self => this;
 
-		internal TypedQueryBox QueryBox { get; set; }
+		internal TypedQueryBoxBase QueryBox { get; set; }
 
 		internal IQuery ContainedQuery => QueryBox?.Query;
 

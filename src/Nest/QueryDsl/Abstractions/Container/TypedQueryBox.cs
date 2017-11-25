@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Nest
 {
-	internal abstract class TypedQueryBox
+	internal abstract class TypedQueryBoxBase
 	{
 		public abstract IQuery Query { get; }
 	}
 
-	internal class TypedQueryBox<T> : TypedQueryBox
+	internal class TypedQueryBox<T> : TypedQueryBoxBase
 		where T : IQuery
 	{
 		public T TypedQuery { get; set; }

@@ -50,6 +50,7 @@ namespace Nest
 			VisitQuery(qd.SimpleQueryString, visitor, (v, d) => v.Visit(d));
 			VisitQuery(qd.Term, visitor, (v, d) => v.Visit(d));
 			VisitQuery(qd.Terms, visitor, (v, d) => v.Visit(d));
+			VisitQuery(qd.StoredFilter, visitor, (v, d) => v.Visit(d));
 			VisitQuery(qd.Wildcard, visitor, (v, d) => v.Visit(d));
 			VisitQuery(qd.Match, visitor, (v, d) => v.Visit(d));
 			VisitQuery(qd.MatchPhrase, visitor, (v, d) => v.Visit(d));
