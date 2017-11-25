@@ -26,7 +26,7 @@ namespace Nest
 			c.IsVerbatim = query.IsVerbatim;
 			c.IsStrict = query.IsStrict;
 			assign(query, container);
-			container.ContainedQuery = query;
+			container.QueryBox = new TypedQueryBox<TQueryInterface>(query);
 
 			//if query is writable (not conditionless or verbatim): return a container that holds the query
 			if (query.IsWritable)
